@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <string name="textview_activity_students_description">На данной странице содержиться список студентов для
+        сортировки
+    </string>
+    <string name="button_activity_students_sort_byname">Отсортировать по имени</string>
+    <string name="button_activity_students_sort_random">Отсортировать случайно</string>
+</resources>
