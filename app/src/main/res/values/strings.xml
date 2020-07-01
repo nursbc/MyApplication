@@ -6,4 +6,24 @@
     </string>
     <string name="button_activity_students_sort_byname">Отсортировать по имени</string>
     <string name="button_activity_students_sort_random">Отсортировать случайно</string>
+    
+    <string name="button_activity1_lab6_go_to_activity2">Перейти в Активити2</string>
+    <string name="textview_activity1_lab6_write_surname">Введите свою фамилию</string>
+    
+    <string name="button_activity_task2_lab6">Capture</string>
+
+    <string name="viewholder_student_name_header">Имя Студента</string>
+    <string name="viewholder_student_description_header">Описание: </string>
+    <string name="viewholder_student_mark_header">Оценка</string>
+
+    <string name="button_fragment_student_sortbyname">SortByName</string>
+    <string name="button_fragment_student_sortbymark">SortByMark</string>
+    <string name="button_fragment_student_randomsort">RandomSort</string>
+
+    <string name="button_fragment_student_searchstudent">Search Student</string>
+
+    <string name="button_fragment_student_add_new_student">Add student</string>
+    <string name="button_fragment_student_cancel_new_student">Cancel</string>
+
+
 </resources>

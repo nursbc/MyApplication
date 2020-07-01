@@ -1,32 +1,55 @@
-package com.example.myapplication
+package com.example.myapplication.Presentation.Activity
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.View
-import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import com.example.myapplication.Presentation.Fragment.StudentsFragment
+import com.example.myapplication.R
 
 class StudentsActivity : AppCompatActivity(){
 
-    var students : ArrayList<String> = ArrayList();
+/*    var students : ArrayList<String> = ArrayList();
     var studentsUseCase : StudentsSortUseCase = StudentsSortUseCase()
 
     var textviewStudentsList : TextView? = null
     var buttonSortByName : Button? = null
-    var buttonSortRandom : Button? = null
+    var buttonSortRandom : Button? = null*/
 
+    var currentFragment: Fragment? = null
+    lateinit var fragmentMenager : FragmentManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_students)
 
+        initializeFragmentManager()
+        initializeDefaultFragment()
+/*
         initActivity()
-        initializeListeners()
+        initializeListeners()*/
+    }
+
+    fun initializeFragmentManager(){
+        fragmentMenager = supportFragmentManager
 
     }
 
-    fun initActivity()
+    fun initializeDefaultFragment(){
+        if(currentFragment==null){
+            currentFragment =
+                StudentsFragment()
+
+            fragmentMenager.beginTransaction()
+                .add(R.id.relativelayout_activity_students_fragment_container,currentFragment!!,"StudentsFragment")
+                .commit()
+
+        }
+    }
+
+
+
+/*    fun initActivity()
     {
         students.add("Adam")
         students.add("Eve")
@@ -56,6 +79,8 @@ class StudentsActivity : AppCompatActivity(){
 
 
         buttonSortByName!!.setOnClickListener(View.OnClickListener {
+
+
             var temp = studentsUseCase.initiateSortStudentsByName(students).toString()
             textviewStudentsList!!.text = temp
 
@@ -65,7 +90,7 @@ class StudentsActivity : AppCompatActivity(){
             var temp = studentsUseCase.initiateSortStudentsRandom(students).toString()
             textviewStudentsList!!.text = temp
         })
-    }
+    }*/
 
 
 }
