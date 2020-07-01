@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/fragment_student_add_new_student_ConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:background="@color/White"
-        >
+        android:gravity="center"
+        android:orientation="vertical">
 
     <EditText
             android:id="@+id/edittext_fragment_student_write_name"
@@ -14,35 +14,56 @@
             android:layout_height="40dp"
             android:hint="Student Name"
             android:textSize="13dp"
-            android:layout_margin="5dp"/>
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:layout_constraintVertical_bias="0.295" />
 
     <EditText
             android:id="@+id/edittext_fragment_student_write_description"
             android:layout_width="150dp"
             android:layout_height="40dp"
+            android:layout_margin="5dp"
             android:hint="Description"
             android:textSize="13dp"
-            android:layout_margin="5dp"/>
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edittext_fragment_student_write_name"/>
 
     <EditText
             android:id="@+id/edittext_fragment_student_write_mark"
             android:layout_width="150dp"
             android:layout_height="40dp"
+            android:layout_margin="5dp"
             android:hint="Student Mark"
             android:textSize="13dp"
-            android:layout_margin="5dp"/>
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edittext_fragment_student_write_description"/>
 
     <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_fragment_student_add_student"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_fragment_student_add_new_student"/>
+            android:text="@string/button_fragment_student_add_new_student"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edittext_fragment_student_write_mark"
+            />
 
     <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_fragment_student_cancel_student"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/button_fragment_student_cancel_new_student"/>
+            android:text="@string/button_fragment_student_cancel_new_student"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_fragment_student_add_student"
+            />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
