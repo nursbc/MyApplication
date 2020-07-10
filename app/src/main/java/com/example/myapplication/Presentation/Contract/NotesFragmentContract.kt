@@ -1,10 +1,9 @@
 package com.example.myapplication.Presentation.Contract
 
-import com.example.myapplication.Domain.Student
+import com.example.myapplication.Domain.Note
 import com.example.myapplication.Presentation.Base.BaseContract
 
-
-interface StudentFragmentContract {
+interface NotesFragmentContract {
 
     interface View : BaseContract.BaseView{
         fun initializePresenter()
@@ -15,24 +14,16 @@ interface StudentFragmentContract {
 
         fun initiateUpdateAdapter()
 
-        fun processData(students: ArrayList<Student>)
-
+        fun processData(notes: ArrayList<Note>)
     }
 
     interface Presenter : BaseContract.BasePresenter<View>{
         fun initializeData()
 
-        fun initiateSortStudentsByName()
+        fun initiateAddTestNote(note: Note)
 
-        fun initiateSortStudentsByMark()
+        fun initiateAddnewNote(note: Note)
 
-        fun initiateSortStudentsRandom()
-
-        fun initiateFindStudentByName(name :String)
-
-        fun initiateAddNewStudent(student: Student)
     }
-
-
 
 }

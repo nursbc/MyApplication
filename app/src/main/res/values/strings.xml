@@ -15,15 +15,22 @@
     <string name="viewholder_student_name_header">Имя Студента</string>
     <string name="viewholder_student_description_header">Описание: </string>
     <string name="viewholder_student_mark_header">Оценка</string>
+    <string name="viewholder_student_group_header">Группа</string>
 
     <string name="button_fragment_student_sortbyname">SortByName</string>
     <string name="button_fragment_student_sortbymark">SortByMark</string>
     <string name="button_fragment_student_randomsort">RandomSort</string>
-
     <string name="button_fragment_student_searchstudent">Search Student</string>
-
+    <string name="button_student_fragment_notes">Notes</string>
     <string name="button_fragment_student_add_new_student">Add student</string>
     <string name="button_fragment_student_cancel_new_student">Cancel</string>
+    <string name="button_fragment_student_add_date">Select</string>
+
+    <string name="viewholder_note_head">Заголовок: </string>
+    <string name="viewholder_note_description">Описание: </string>
+    <string name="viewholder_note_date">Дата: </string>
+
+
 
 
 </resources>

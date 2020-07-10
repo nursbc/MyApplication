@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplication.Data.Student
+import com.example.myapplication.Domain.Student
 import com.example.myapplication.Presentation.Adapter.StudentsAdapter
 import com.example.myapplication.Presentation.Contract.StudentFragmentContract
 import com.example.myapplication.Presentation.Presenters.StudentFragmentPresenter
@@ -79,6 +79,12 @@ class StudentsFragment : Fragment(), View.OnClickListener, StudentFragmentContra
                     ?.addToBackStack(null)
                     ?.commit()
             }
+            R.id.fragment_students_floating_button_go_to_notes -> {
+                val fragmentManager = fragmentManager
+                fragmentManager?.beginTransaction()?.add(R.id.relativelayout_activity_students_fragment_container, NotesFragment(), "NotesFragment")
+                    ?.addToBackStack(null)
+                    ?.commit()
+            }
         }
     }
 
@@ -125,6 +131,7 @@ class StudentsFragment : Fragment(), View.OnClickListener, StudentFragmentContra
         button_fragment_student_randomsort?.setOnClickListener(this)
         button_fragment_student_searchstudent?.setOnClickListener(this)
         button_fragment_student_add_new_student?.setOnClickListener(this)
+        fragment_students_floating_button_go_to_notes?.setOnClickListener(this)
     }
 
 

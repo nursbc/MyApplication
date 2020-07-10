@@ -4,15 +4,17 @@ import android.content.Context
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.Data.Student
+import com.example.myapplication.Domain.Student
 import com.example.myapplication.R
 
 class StudentHolder (itemview : View) : RecyclerView.ViewHolder(itemview)
 {
     var context : Context? = null
     var textViewName : TextView? = null
-    var textDescription : TextView? = null
-    var textMark : TextView? = null
+    var textViewDescription : TextView? = null
+    var textViewMark : TextView? = null
+    var textViewDate : TextView? = null
+    var textViewGroup : TextView? = null
 
     init
     {
@@ -22,14 +24,24 @@ class StudentHolder (itemview : View) : RecyclerView.ViewHolder(itemview)
     fun initializeView()
     {
         textViewName = itemView.findViewById(R.id.textview_viewholder_student_name)
-        textDescription = itemView.findViewById(R.id.textview_viewholder_student_description)
-        textMark = itemView.findViewById(R.id.textview_viewholder_student_mark)
+        textViewDescription = itemView.findViewById(R.id.textview_viewholder_student_description)
+        textViewMark = itemView.findViewById(R.id.textview_viewholder_student_mark)
+        textViewDate = itemView.findViewById(R.id.textview_viewholder_student_date_text)
+        textViewGroup = itemView.findViewById(R.id.textview_viewholder_student_group_text)
+
     }
 
     fun initiateBind(student : Student)
     {
         textViewName?.setText(student.name)
-        textDescription?.setText(student.description)
-        textMark?.setText(student.mark.toString())
+        textViewDescription?.setText(student.description)
+        textViewMark?.setText(student.mark.toString())
+        textViewGroup?.setText(student.studentGroup)
+        if(student.date == null)
+        {
+            textViewDate?.setText("")
+        }
+        else
+            textViewDate?.setText(student.getnDate())
     }
 }

@@ -1,6 +1,6 @@
 package com.example.myapplication.Presentation.Presenters
 
-import com.example.myapplication.Data.Student
+import com.example.myapplication.Domain.Student
 import com.example.myapplication.Domain.StudentsSortUseCase
 import com.example.myapplication.Presentation.Contract.StudentFragmentContract
 
@@ -20,21 +20,111 @@ class StudentFragmentPresenter : StudentFragmentContract.Presenter{
 
     override fun initializeData() {
         view?.processData(students.apply {
-            add(Student("Adam","Good Student", mark = 5.0F))
-            add(Student("Eve", "Bad Student", mark = 4.0F))
-            add(Student("Bill","Avarage Student", mark = 3.0F))
-            add(Student("Zoe", "Avarage Student", mark = 2.0F))
-            add(Student("Grizli", "Bad Student", mark = 4.0F))
-            add(Student("Chupakabra", "Bad Student", mark = 4.0F))
-            add(Student("Dog", "Good Student", mark = 2.0F))
-            add(Student("Cat", "Avarage Student", mark = 3.0F))
-            add(Student("Sam", "Good Student", mark = 4.0F))
-            add(Student("Spider", "Bad Student", mark = 3.0F))
-            add(Student("Bender", "bad Student", mark = 1.0F))
-            add(Student("Gendalf", "Good Student", mark = 5.0F))
-            add(Student("Frodo", "Avarage Student", mark = 4.0F))
-            add(Student("Geralt", "Good Student", mark = 2.0F))
-            add(Student("Pig", "Bad Student", mark = 2.0F))
+            add(
+                Student(
+                    "Adam",
+                    "Good Student",
+                    mark = 5.0F
+                )
+            )
+            add(
+                Student(
+                    "Eve",
+                    "Bad Student",
+                    mark = 4.0F
+                )
+            )
+            add(
+                Student(
+                    "Bill",
+                    "Avarage Student",
+                    mark = 3.0F
+                )
+            )
+            add(
+                Student(
+                    "Zoe",
+                    "Avarage Student",
+                    mark = 2.0F
+                )
+            )
+            add(
+                Student(
+                    "Grizli",
+                    "Bad Student",
+                    mark = 4.0F
+                )
+            )
+            add(
+                Student(
+                    "Chupakabra",
+                    "Bad Student",
+                    mark = 4.0F
+                )
+            )
+            add(
+                Student(
+                    "Dog",
+                    "Good Student",
+                    mark = 2.0F
+                )
+            )
+            add(
+                Student(
+                    "Cat",
+                    "Avarage Student",
+                    mark = 3.0F
+                )
+            )
+            add(
+                Student(
+                    "Sam",
+                    "Good Student",
+                    mark = 4.0F
+                )
+            )
+            add(
+                Student(
+                    "Spider",
+                    "Bad Student",
+                    mark = 3.0F
+                )
+            )
+            add(
+                Student(
+                    "Bender",
+                    "bad Student",
+                    mark = 1.0F
+                )
+            )
+            add(
+                Student(
+                    "Gendalf",
+                    "Good Student",
+                    mark = 5.0F
+                )
+            )
+            add(
+                Student(
+                    "Frodo",
+                    "Avarage Student",
+                    mark = 4.0F
+                )
+            )
+            add(
+                Student(
+                    "Geralt",
+                    "Good Student",
+                    mark = 2.0F
+                )
+            )
+            add(
+                Student(
+                    "Pig",
+                    "Bad Student",
+                    mark = 2.0F
+                )
+            )
 
         })
         view?.initiateUpdateAdapter()
@@ -62,7 +152,7 @@ class StudentFragmentPresenter : StudentFragmentContract.Presenter{
 
     override fun initiateFindStudentByName(name :String) {
         var arrayList : ArrayList<Student> = ArrayList()
-        var temp = students.find{student -> student.name.equals(name) }
+        var temp = students.find{student -> student.name.toUpperCase().equals(name.toUpperCase()) }
 
         if(temp != null)
         {

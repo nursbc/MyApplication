@@ -1,0 +1,69 @@
+package com.example.myapplication.Presentation.viewHolder
+
+import android.annotation.SuppressLint
+import android.content.Context
+import android.os.Build
+import android.view.View
+import android.widget.TextView
+import androidx.annotation.RequiresApi
+import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.Domain.Note
+import com.example.myapplication.R
+import java.time.LocalDateTime
+import java.util.*
+
+class NoteViewHolder (itemView : View) : RecyclerView.ViewHolder(itemView) {
+
+    var context : Context? = null
+    var textViewDate : TextView? = null
+    var textViewHead : TextView? = null
+    var textViewDescription : TextView? = null
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    var data = LocalDateTime.now()
+    init
+    {
+        initializeView()
+    }
+
+    fun initializeView()
+    {
+        textViewDescription = itemView.findViewById(R.id.textview_viewholder_note_description_text)
+        textViewHead = itemView.findViewById(R.id.textview_viewholder_note_head_text)
+        textViewDate = itemView.findViewById(R.id.textview_viewholder_note_date_text)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    @SuppressLint("ResourceAsColor")
+    fun initiateBind(note : Note)
+    {
+        if(note.date == getDate(data.year, data.month.value, data.dayOfMonth))
+        {
+            textViewDate?.setBackgroundResource(R.color.Red)
+            textViewDate?.setText(note.date.toString())
+            textViewHead?.setBackgroundResource(R.color.Red)
+            textViewHead?.setText(note.head)
+            textViewDescription?.setBackgroundResource(R.color.Red)
+            textViewDescription?.setText(note.description)
+        }
+
+            textViewDate?.setText(note.date.toString())
+            textViewHead?.setText(note.head)
+            textViewDescription?.setText(note.description)
+
+    }
+
+
+    fun getDate(year: Int, month: Int, day: Int): Date {
+        val cal = Calendar.getInstance()
+        cal[Calendar.YEAR] = year
+        cal[Calendar.MONTH] = month
+        cal[Calendar.DAY_OF_MONTH] = day
+        cal[Calendar.HOUR_OF_DAY] = 0
+        cal[Calendar.MINUTE] = 0
+        cal[Calendar.SECOND] = 0
+        cal[Calendar.MILLISECOND] = 0
+        return cal.time
+    }
+
+}

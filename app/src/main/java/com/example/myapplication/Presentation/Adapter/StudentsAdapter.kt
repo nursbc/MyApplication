@@ -4,14 +4,14 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.Data.Student
+import com.example.myapplication.Domain.Student
 import com.example.myapplication.R
 import com.example.myapplication.Presentation.viewHolder.StudentHolder
 
 class StudentsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     var context: Context? = null
-    lateinit var students: List<Student>
+    var students: List<Student>
 
     constructor(context: Context?, students: List<Student>){
         this.context = context

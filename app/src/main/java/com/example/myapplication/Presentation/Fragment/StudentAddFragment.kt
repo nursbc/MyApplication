@@ -1,18 +1,26 @@
 package com.example.myapplication.Presentation.Fragment
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.fragment.app.Fragment
-import com.example.myapplication.Data.Student
+import com.example.myapplication.Domain.Student
 import com.example.myapplication.Presentation.Contract.StudentFragmentContract
-import com.example.myapplication.Presentation.Presenters.StudentFragmentPresenter
 import com.example.myapplication.R
 import kotlinx.android.synthetic.main.fragment_students_add_student.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class StudentAddFragment : Fragment(), View.OnClickListener, StudentFragmentContract.View {
+
+    var student : Student? = null
+    var selectDate = Calendar.getInstance()
+    val year = selectDate.get(Calendar.YEAR)
+    val month = selectDate.get(Calendar.MONTH)
+    val day = selectDate.get(Calendar.DAY_OF_MONTH)
+    var date : Date? = null
 
 
     override fun onCreateView(
@@ -34,51 +42,76 @@ class StudentAddFragment : Fragment(), View.OnClickListener, StudentFragmentCont
     }
 
     override fun initializeListeners() {
-        button_fragment_student_cancel_student.setOnClickListener(this)
+        button_fragment_student_cancel_add.setOnClickListener(this)
         button_fragment_student_add_student.setOnClickListener(this)
+        button_fragment_student_add_date.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.button_fragment_student_cancel_student -> {
-                button_fragment_student_cancel_student.setOnClickListener {
+            R.id.button_fragment_student_cancel_add -> {
+                button_fragment_student_cancel_add.setOnClickListener {
                     val fragmentManager = fragmentManager
                     fragmentManager?.popBackStack()
                 }
             }
+            R.id.button_fragment_student_add_date ->
+            {
+                val datePickerDialog = activity?.let { DatePickerDialog(it, DatePickerDialog.OnDateSetListener  { view, year, monthOfYear, dayOfMonth ->
+                    textview_fragment_student_add_show_date.setText(dayOfMonth.toString() + ":" + (monthOfYear + 1).toString() + ":" + year.toString())
+                            date = getDate(year, monthOfYear, dayOfMonth)
+                        }, year, month, day)
+                    }
+                datePickerDialog?.show()
+            }
+
             R.id.button_fragment_student_add_student -> {
                 when {
-                    edittext_fragment_student_write_name.text.toString().isEmpty() -> {
-                        edittext_fragment_student_write_name.setText("Write name")
+                    edittext_fragment_student_add_write_name.text.toString().isEmpty() -> {
+                        edittext_fragment_student_add_write_name.setText("Write name")
                     }
-                    edittext_fragment_student_write_description.text.toString().isEmpty() -> {
-                        edittext_fragment_student_write_description.setText("Write description about student")
+                    edittext_fragment_student_add_write_description.text.toString().isEmpty() -> {
+                        edittext_fragment_student_add_write_description.setText("Write description about student")
                     }
-                    edittext_fragment_student_write_mark.text.toString().isEmpty() -> {
-                        edittext_fragment_student_write_mark.setText("Write mark")
+                    edittext_fragment_student_add_write_mark.text.toString().isEmpty() -> {
+                        edittext_fragment_student_add_write_mark.setText("Write mark")
                     }
                     else -> {
-                        var student: Student = Student(
-                            edittext_fragment_student_write_name.text.toString(),
-                            edittext_fragment_student_write_description.text.toString(),
-                            edittext_fragment_student_write_mark.text.toString().toFloat()
-                        )
-                        val fragment =
-                            fragmentManager?.findFragmentByTag("StudentsFragment") as StudentsFragment
+                        var student : Student =
+                            Student(
+                                edittext_fragment_student_add_write_name.text.toString(),
+                                edittext_fragment_student_add_write_description.text.toString(),
+                                edittext_fragment_student_add_write_mark.text.toString().toFloat(),
+                                this.date,
+                                edittext_fragment_student_add_write_group.text.toString()
+                            )
+                        val fragment = fragmentManager?.findFragmentByTag("StudentsFragment") as StudentsFragment
 
                         fragment.presenter.initiateAddNewStudent(student)
 
                         val fragmentManager = fragmentManager
                         fragmentManager?.popBackStack()
                     }
+
                 }
             }
         }
     }
 
+    fun getDate(year: Int, month: Int, day: Int): Date {
+        val cal = Calendar.getInstance()
+        cal[Calendar.YEAR] = year
+        cal[Calendar.MONTH] = month
+        cal[Calendar.DAY_OF_MONTH] = day
+        cal[Calendar.HOUR_OF_DAY] = 0
+        cal[Calendar.MINUTE] = 0
+        cal[Calendar.SECOND] = 0
+        cal[Calendar.MILLISECOND] = 0
+        return cal.time
+    }
+
 
     override fun initializePresenter() {
-        TODO("Not yet implemented")
     }
 
     override fun initializeLayoutManager() {
@@ -105,5 +138,7 @@ class StudentAddFragment : Fragment(), View.OnClickListener, StudentFragmentCont
     override fun initializeDependencies() {
         TODO("Not yet implemented")
     }
+
+
 
 }

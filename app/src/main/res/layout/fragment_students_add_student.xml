@@ -9,7 +9,7 @@
         android:orientation="vertical">
 
     <EditText
-            android:id="@+id/edittext_fragment_student_write_name"
+            android:id="@+id/edittext_fragment_student_add_write_name"
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:hint="Student Name"
@@ -24,18 +24,18 @@
             app:layout_constraintVertical_bias="0.295" />
 
     <EditText
-            android:id="@+id/edittext_fragment_student_write_description"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_margin="5dp"
-            android:hint="Description"
-            android:textSize="13dp"
-            app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintStart_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edittext_fragment_student_write_name"/>
+        android:id="@+id/edittext_fragment_student_add_write_description"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_margin="5dp"
+        android:hint="Description"
+        android:textSize="13dp"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_fragment_student_add_write_name"/>
 
     <EditText
-            android:id="@+id/edittext_fragment_student_write_mark"
+            android:id="@+id/edittext_fragment_student_add_write_mark"
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:layout_margin="5dp"
@@ -43,7 +43,46 @@
             android:textSize="13dp"
             app:layout_constraintEnd_toStartOf="parent"
             app:layout_constraintStart_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edittext_fragment_student_write_description"/>
+            app:layout_constraintTop_toBottomOf="@+id/edittext_fragment_student_add_write_description"/>
+
+    <EditText
+            android:id="@+id/edittext_fragment_student_add_write_group"
+            android:digits="0123456789"
+            android:inputType="number"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:hint="Student Group"
+            android:textSize="13dp"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edittext_fragment_student_add_write_mark"/>
+
+    <TextView
+            android:id="@+id/textview_fragment_student_add_show_date"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:textColor="@color/color_black"
+            android:hint="Select BirthDay"
+            android:textColorHint="@color/color_black"
+            android:textSize="13dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edittext_fragment_student_add_write_group"
+            />
+
+    <Button
+        android:id="@+id/button_fragment_student_add_date"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:text="@string/button_fragment_student_add_date"
+            app:layout_constraintStart_toEndOf="@+id/textview_fragment_student_add_show_date"
+            app:layout_constraintTop_toBottomOf="@+id/edittext_fragment_student_add_write_group"
+            />
+
 
     <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_fragment_student_add_student"
@@ -52,11 +91,11 @@
             android:text="@string/button_fragment_student_add_new_student"
             app:layout_constraintEnd_toStartOf="parent"
             app:layout_constraintStart_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edittext_fragment_student_write_mark"
+            app:layout_constraintTop_toBottomOf="@+id/textview_fragment_student_add_show_date"
             />
 
     <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_fragment_student_cancel_student"
+            android:id="@+id/button_fragment_student_cancel_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/button_fragment_student_cancel_new_student"

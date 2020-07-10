@@ -1,6 +1,5 @@
 package com.example.myapplication.Domain
 
-import com.example.myapplication.Data.Student
 import kotlin.collections.ArrayList
 
 class StudentsSortUseCase {

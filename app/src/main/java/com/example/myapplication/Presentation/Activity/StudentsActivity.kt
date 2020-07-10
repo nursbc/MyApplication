@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.example.myapplication.Presentation.Fragment.NotesFragment
 import com.example.myapplication.Presentation.Fragment.StudentsFragment
+import com.example.myapplication.Presentation.Fragment.ViewPagerFragment
 import com.example.myapplication.R
 
 class StudentsActivity : AppCompatActivity(){
@@ -37,13 +39,18 @@ class StudentsActivity : AppCompatActivity(){
 
     fun initializeDefaultFragment(){
         if(currentFragment==null){
-            currentFragment =
-                StudentsFragment()
+            currentFragment = StudentsFragment()
+/*                NotesFragment().apply {
+                    arguments = Bundle().apply {
+                        putString("DATA", "OKAY")
+                    }
+                }*/
 
             fragmentMenager.beginTransaction()
+/*                .add(R.id.relativelayout_activity_students_fragment_container,currentFragment!!,"StudentsFragment")
+                .commit()*/
                 .add(R.id.relativelayout_activity_students_fragment_container,currentFragment!!,"StudentsFragment")
                 .commit()
-
         }
     }
 
