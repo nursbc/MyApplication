@@ -6,21 +6,22 @@ import com.example.myapplication.Presentation.Base.BaseContract
 interface NotesFragmentContract {
 
     interface View : BaseContract.BaseView{
-        fun initializePresenter()
+        fun initializeNotePresenter()
 
-        fun initializeLayoutManager()
+        fun initializeNoteLayoutManager()
 
-        fun initializeAdapter()
+        fun NoteAdapter(notes : ArrayList<Note>)
 
-        fun initiateUpdateAdapter()
+        fun initializeNoteAdapter()
 
-        fun processData(notes: ArrayList<Note>)
+        fun initiateNoteUpdateAdapter()
+
+
+        fun processNoteData(notes: ArrayList<Note>)
     }
 
     interface Presenter : BaseContract.BasePresenter<View>{
         fun initializeData()
-
-        fun initiateAddTestNote(note: Note)
 
         fun initiateAddnewNote(note: Note)
 

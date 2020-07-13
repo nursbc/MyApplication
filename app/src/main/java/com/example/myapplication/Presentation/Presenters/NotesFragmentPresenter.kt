@@ -10,7 +10,7 @@ import kotlin.collections.ArrayList
 
 class NotesFragmentPresenter : NotesFragmentContract.Presenter {
 
-    var view : NotesFragmentContract.View? = null
+    var viewNote : NotesFragmentContract.View? = null
 
     var notes : ArrayList<Note> = ArrayList()
 
@@ -28,74 +28,31 @@ class NotesFragmentPresenter : NotesFragmentContract.Presenter {
 
 
     override fun initializeData() {
-        view?.processData(notes.apply {
+        viewNote?.processNoteData(notes.apply {
             add(Note(temp, "Vajnie", "Dela"))
-            add(
-                Note(
-                    getDate(2020, 1, 26),
-                    "Vajnie",
-                    "Dela"
-                )
-            )
-            add(
-                Note(
-                    getDate(2020, 3, 1),
-                    "pora uje",
-                    "Sport"
-                )
-            )
-            add(
-                Note(
-                    getDate(2020, 3, 8),
-                    "s druziami",
-                    "Progulka"
-                )
-            )
-            add(
-                Note(
-                    getDate(2020, 4, 26),
-                    "Dela",
-                    "Dela"
-                )
-            )
-            add(
-                Note(
-                    getDate(2020, 5, 26),
-                    "Dela",
-                    "Dela"
-                )
-            )
+            add(Note(temp, "Vajnie", "Dela"))
+            add(Note(temp, "Vajnie", "Dela"))
         })
 
-        view?.initializeAdapter()
+        viewNote?.initiateNoteUpdateAdapter()
     }
 
-    fun getDate(year: Int, month: Int, day: Int): Date {
-        val cal = Calendar.getInstance()
-        cal[Calendar.YEAR] = year
-        cal[Calendar.MONTH] = month
-        cal[Calendar.DAY_OF_MONTH] = day
-        cal[Calendar.HOUR_OF_DAY] = 0
-        cal[Calendar.MINUTE] = 0
-        cal[Calendar.SECOND] = 0
-        cal[Calendar.MILLISECOND] = 0
-        return cal.time
-    }
-
-    override fun initiateAddTestNote(note: Note) {
-        TODO("Not yet implemented")
+    fun getDate(year: Int, month: Int, day: Int): String {
+        var date = "$year:$month:$day"
+        return date
     }
 
     override fun initiateAddnewNote(note: Note) {
-        TODO("Not yet implemented")
+        notes.add(note)
+        viewNote?.NoteAdapter(notes)
     }
 
     override fun attach(view: NotesFragmentContract.View) {
-        this.view = view
+        this.viewNote = view
     }
 
     override fun onStop() {
-        this.view = null
+        this.viewNote = null
     }
 
 

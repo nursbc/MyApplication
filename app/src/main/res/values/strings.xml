@@ -24,7 +24,16 @@
     <string name="button_student_fragment_notes">Notes</string>
     <string name="button_fragment_student_add_new_student">Add student</string>
     <string name="button_fragment_student_cancel_new_student">Cancel</string>
-    <string name="button_fragment_student_add_date">Select</string>
+    <string name="button_fragment_student_add_date">Select Date</string>
+
+    <string name="fragment_students_name">Name</string>
+    <string name="fragment_students_detail_text_view_detail">Details</string>
+    <string name="fragment_students_detail_text_view_mark">Mark</string>
+    <string name="fragment_students_detail_text_view_date_text">Date</string>
+    <string name="fragment_students_detail_text_view_group">Group</string>
+    <string name="button_Back_fragment_students_detail">Back</string>
+    <string name="button_update_fragment_students_detail">Update</string>
+    <string name="button_add_fragment_students_detail">Add Note</string>
 
     <string name="viewholder_note_head">Заголовок: </string>
     <string name="viewholder_note_description">Описание: </string>

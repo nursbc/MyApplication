@@ -76,12 +76,14 @@ class StudentsFragment : Fragment(), View.OnClickListener, StudentFragmentContra
                 val fragmentManager = fragmentManager
                 fragmentManager?.beginTransaction()?.add(
                     R.id.relativelayout_activity_students_fragment_container, StudentAddFragment(), "StudentAddStudent")
+                    ?.hide(this)
                     ?.addToBackStack(null)
                     ?.commit()
             }
             R.id.fragment_students_floating_button_go_to_notes -> {
                 val fragmentManager = fragmentManager
                 fragmentManager?.beginTransaction()?.add(R.id.relativelayout_activity_students_fragment_container, NotesFragment(), "NotesFragment")
+                    ?.hide(this)
                     ?.addToBackStack(null)
                     ?.commit()
             }

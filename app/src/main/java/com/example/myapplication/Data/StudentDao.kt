@@ -21,17 +21,17 @@ public interface StudentDao {
     @Query("SELECT * FROM student WHERE studentGroup IS :groupId")
     fun initiateGetStudentsByGroup(groupId: String) : List<Student>
 
-    @Delete
-    fun initiateDeleteAllStudents(students : List<Student>)
+    @Query("DELETE FROM student")
+    fun initiateDeleteAllStudents()
 
-    @Delete
-    fun initiateDeleteAllGroups(groups : List<StudentsGroup>)
+    @Query("DELETE FROM studentsgroup")
+    fun initiateDeleteAllGroups()
 
-    @Delete
-    fun initiateDeleteStudentById(student : Student)
+    @Query("DELETE FROM student WHERE name IS :name")
+    fun initiateDeleteStudentById(name : String)
 
-    @Delete
-    fun initiateDeleteGroupById(group : StudentsGroup)
+    @Query("DELETE FROM StudentsGroup WHERE groupId IS :groupId")
+    fun initiateDeleteGroupById(groupId: String)
 
     @Insert
     fun initiateInsertStudent(student: Student)

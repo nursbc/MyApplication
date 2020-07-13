@@ -17,6 +17,25 @@
             android:layout_margin="16dp"
             />
 
+    <Button
+            android:id="@+id/button_back_fragment_note_update"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/button_update_fragment_students_detail"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fragment_notes_floating_button_create"
+            android:layout_margin="16dp"
+            />
+    <Button
+            android:id="@+id/button_back_fragment_note"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/button_Back_fragment_students_detail"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_back_fragment_note_update"
+            android:layout_margin="16dp"
+            />
+
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclervyew_fragment_note"
             android:layout_width="match_parent"

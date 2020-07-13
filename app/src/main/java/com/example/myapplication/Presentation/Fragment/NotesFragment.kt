@@ -4,14 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Domain.Note
 import com.example.myapplication.Presentation.Adapter.NotesAdapter
 import com.example.myapplication.Presentation.Contract.NotesFragmentContract
 import com.example.myapplication.Presentation.Presenters.NotesFragmentPresenter
 import com.example.myapplication.R
 import kotlinx.android.synthetic.main.fragment_notes.*
+import kotlinx.android.synthetic.main.fragment_students.*
 
 class NotesFragment : Fragment(), View.OnClickListener, NotesFragmentContract.View {
 
@@ -39,36 +42,59 @@ class NotesFragment : Fragment(), View.OnClickListener, NotesFragmentContract.Vi
 
         initializeViews()
         initializeListeners()
-        initializePresenter()
-        initializeLayoutManager()
-        initializeAdapter()
+        initializeNotePresenter()
+        initializeNoteLayoutManager()
+        initializeNoteAdapter()
         presenter.initializeData()
     }
 
     override fun onClick(v: View?) {
-
+        when(v?.id)
+        {
+            R.id.button_back_fragment_note -> {
+                val fragmentManager = fragmentManager
+                fragmentManager?.popBackStack()
+            }
+            R.id.fragment_notes_floating_button_create -> {
+                val fragmentManager = fragmentManager
+                fragmentManager?.beginTransaction()?.add(R.id.relativelayout_activity_students_fragment_container, NotesAddFragment(), "NotesAddFragment")
+                    ?.hide(this)
+                    ?.addToBackStack(null)
+                    ?.commit()
+            }
+            R.id.button_back_fragment_note_update -> {
+                initializeNoteAdapter()
+            }
+        }
 
     }
 
-    override fun initializePresenter() {
+
+    override fun initializeNotePresenter() {
         presenter = NotesFragmentPresenter()
         presenter.attach(this)
     }
 
-    override fun initializeLayoutManager() {
+    override fun initializeNoteLayoutManager() {
         recyclervyew_fragment_note?.layoutManager = LinearLayoutManager(context)
     }
 
-    override fun initializeAdapter() {
+    override fun NoteAdapter(notes : ArrayList<Note>) {
         notesAdapter = NotesAdapter(context, notes)
         recyclervyew_fragment_note.adapter = notesAdapter
     }
 
-    override fun initiateUpdateAdapter() {
+    override fun initializeNoteAdapter() {
+        notesAdapter = NotesAdapter(context, notes)
+        recyclervyew_fragment_note.adapter = notesAdapter
+    }
+
+
+    override fun initiateNoteUpdateAdapter() {
         notesAdapter?.notifyDataSetChanged()
     }
 
-    override fun processData(notes: ArrayList<Note>) {
+    override fun processNoteData(notes: ArrayList<Note>) {
         this.notes.clear()
         this.notes.addAll(notes)
     }
@@ -79,6 +105,8 @@ class NotesFragment : Fragment(), View.OnClickListener, NotesFragmentContract.Vi
 
     override fun initializeListeners() {
         fragment_notes_floating_button_create.setOnClickListener(this)
+        button_back_fragment_note.setOnClickListener(this)
+        button_back_fragment_note_update.setOnClickListener(this)
     }
 
     override fun initializeArguments() {

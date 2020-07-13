@@ -141,13 +141,13 @@ class StudentFragmentPresenter : StudentFragmentContract.Presenter{
     {
         studentsSortUseCase.initiateSortStudentsByMark(students)
         view?.processData(students)
-        view?.initiateUpdateAdapter()
+        view?.initializeAdapter()
     }
 
     override fun initiateSortStudentsRandom() {
         studentsSortUseCase.initiateSortStudentsRandom(students)
         view?.processData(students)
-        view?.initiateUpdateAdapter()
+        view?.initializeAdapter()
     }
 
     override fun initiateFindStudentByName(name :String) {
@@ -158,20 +158,19 @@ class StudentFragmentPresenter : StudentFragmentContract.Presenter{
         {
             arrayList.add(temp)
             view?.processData(arrayList)
-            view?.initiateUpdateAdapter()
+            view?.initializeAdapter()
         }
         else
         {
             view?.processData(students)
-            view?.initiateUpdateAdapter()
+            view?.initializeAdapter()
         }
     }
 
 
     override fun initiateAddNewStudent(student: Student) {
-
         students.add(student)
-        view?.initiateUpdateAdapter()
+        view?.initializeAdapter()
 
     }
 
